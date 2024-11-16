@@ -25,7 +25,10 @@ export default function ValorarPage() {
   };
 
   return (
-    <div className="min-h-screen p-8" style={{ backgroundColor: "#FBF7EE" }}>
+    <div
+      className="min-h-screen p-8 pt-24"
+      style={{ backgroundColor: "#FBF7EE" }}
+    >
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center">
           <h1
