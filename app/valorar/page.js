@@ -30,13 +30,16 @@ export default function ValorarPage() {
 
     try {
       console.log("Sending prediction request:", inputs);
-      const response = await fetch("/api/agent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inputs),
-      });
+      const response = await fetch(
+        "https://modelo-fudwh7dsfqd4azax.canadacentral-01.azurewebsites.net/api/predict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(inputs),
+        }
+      );
 
       const data = await response.json();
       console.log(data);
@@ -64,11 +67,11 @@ export default function ValorarPage() {
   return (
     <div
       className={`min-h-screen p-8 pt-24 ${raleway.className}`}
-      style={{ 
+      style={{
         backgroundColor: "#FBF7EE",
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23EDE9E0' stroke-width='0.15'%3E%3Cpath d='M0 20h100 M0 40h100 M0 60h100 M0 80h100' /%3E%3Cpath d='M20 0v100 M40 0v100 M60 0v100 M80 0v100' /%3E%3Ccircle cx='20' cy='20' r='2' fill='none' /%3E%3Ccircle cx='80' cy='80' r='2' fill='none' /%3E%3Cpath d='M30 30h40v40H30z' fill='none' /%3E%3Cpath d='M25 25l10 10 M75 25l-10 10 M25 75l10 -10 M75 75l-10 -10' fill='none' /%3E%3C/g%3E%3C/svg%3E")`,
-        backgroundSize: '400px 400px',
-        backgroundPosition: 'center',
+        backgroundSize: "400px 400px",
+        backgroundPosition: "center",
       }}
     >
       <div className="max-w-3xl mx-auto space-y-8">
@@ -77,8 +80,8 @@ export default function ValorarPage() {
             className="text-4xl md:text-5xl font-semibold mb-4"
             style={{ color: "#191D20" }}
           >
-            <span 
-              style={{ 
+            <span
+              style={{
                 backgroundColor: "#EEDFA1",
                 padding: "0.2em 0.5em",
                 borderRadius: "12px",
@@ -92,7 +95,10 @@ export default function ValorarPage() {
             </span>{" "}
             de Avalúo Inmobiliario
           </h1>
-          <p className="text-lg md:text-xl mb-16 max-w-2xl mx-auto" style={{ color: "#191D20" }}>
+          <p
+            className="text-lg md:text-xl mb-16 max-w-2xl mx-auto"
+            style={{ color: "#191D20" }}
+          >
             Para estimar el valor del inmueble necesitamos algunos datos
           </p>
         </div>
@@ -104,7 +110,10 @@ export default function ValorarPage() {
               {/* Superficie Construida */}
               <div className="form-control">
                 <label className="label">
-                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
+                  <span
+                    className="text-base font-medium"
+                    style={{ color: "#191D20" }}
+                  >
                     Superficie construida en m²
                   </span>
                 </label>
@@ -123,7 +132,10 @@ export default function ValorarPage() {
               {/* Número de Cuartos */}
               <div className="form-control">
                 <label className="label">
-                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
+                  <span
+                    className="text-base font-medium"
+                    style={{ color: "#191D20" }}
+                  >
                     Número de cuartos
                   </span>
                 </label>
@@ -142,7 +154,10 @@ export default function ValorarPage() {
               {/* Número de Baños */}
               <div className="form-control">
                 <label className="label">
-                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
+                  <span
+                    className="text-base font-medium"
+                    style={{ color: "#191D20" }}
+                  >
                     Número de baños
                   </span>
                 </label>
@@ -161,7 +176,10 @@ export default function ValorarPage() {
               {/* Zona */}
               <div className="form-control">
                 <label className="label">
-                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
+                  <span
+                    className="text-base font-medium"
+                    style={{ color: "#191D20" }}
+                  >
                     Zona de ubicación
                   </span>
                 </label>
@@ -199,32 +217,56 @@ export default function ValorarPage() {
           <div className="w-full md:w-1/2">
             {prediction && !loading && (
               <div className="card bg-white p-8 rounded-lg shadow-sm border border-gray-100 space-y-6">
-                <h2 className="text-xl font-semibold" style={{ color: "#191D20" }}>
+                <h2
+                  className="text-xl font-semibold"
+                  style={{ color: "#191D20" }}
+                >
                   Resultados de la Predicción
                 </h2>
                 <div className="space-y-4">
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: "#EEDFA1" }}>
-                    <p className="text-sm font-medium mb-1" style={{ color: "#191D20" }}>
+                  <div
+                    className="p-4 rounded-lg"
+                    style={{ backgroundColor: "#EEDFA1" }}
+                  >
+                    <p
+                      className="text-sm font-medium mb-1"
+                      style={{ color: "#191D20" }}
+                    >
                       Precio Predicho
                     </p>
-                    <p className="text-2xl font-semibold" style={{ color: "#191D20" }}>
+                    <p
+                      className="text-2xl font-semibold"
+                      style={{ color: "#191D20" }}
+                    >
                       {formatPrice(prediction.predicted_price)}
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <p className="text-sm font-medium mb-1" style={{ color: "#191D20" }}>
+                      <p
+                        className="text-sm font-medium mb-1"
+                        style={{ color: "#191D20" }}
+                      >
                         Precio Mínimo
                       </p>
-                      <p className="text-lg font-semibold" style={{ color: "#191D20" }}>
+                      <p
+                        className="text-lg font-semibold"
+                        style={{ color: "#191D20" }}
+                      >
                         {formatPrice(prediction.min_price)}
                       </p>
                     </div>
                     <div className="p-4 bg-gray-50 rounded-lg">
-                      <p className="text-sm font-medium mb-1" style={{ color: "#191D20" }}>
+                      <p
+                        className="text-sm font-medium mb-1"
+                        style={{ color: "#191D20" }}
+                      >
                         Precio Máximo
                       </p>
-                      <p className="text-lg font-semibold" style={{ color: "#191D20" }}>
+                      <p
+                        className="text-lg font-semibold"
+                        style={{ color: "#191D20" }}
+                      >
                         {formatPrice(prediction.max_price)}
                       </p>
                     </div>
