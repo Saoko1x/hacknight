@@ -1,111 +1,107 @@
 "use client";
+import { Raleway } from "next/font/google";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-import { useRef, useState } from "react";
+const raleway = Raleway({ subsets: ["latin"] });
 
-// <FAQ> component is a lsit of <Item> component
-// Just import the FAQ & add your FAQ content to the const faqList
-
-const faqList = [
-  {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
-  },
-  {
-    question: "Can I get a refund?",
-    answer: (
-      <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
-      </p>
-    ),
-  },
-  {
-    question: "I have another question",
-    answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
-    ),
-  },
-];
-
-const Item = ({ item }) => {
-  const accordion = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
-
+const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
-    <li>
+    <div className="mb-4">
       <button
-        className="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
-        onClick={(e) => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-        aria-expanded={isOpen}
+        className="w-full flex justify-between items-center p-4 bg-white rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
+        onClick={onClick}
       >
-        <span
-          className={`flex-1 text-base-content ${isOpen ? "text-primary" : ""}`}
-        >
-          {item?.question}
+        <span className="text-left font-medium" style={{ color: "#191D20" }}>
+          {question}
         </span>
-        <svg
-          className={`flex-shrink-0 w-4 h-4 ml-auto fill-current`}
-          viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
         >
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center transition duration-200 ease-out ${
-              isOpen && "rotate-180"
-            }`}
-          />
-          <rect
-            y="7"
-            width="16"
-            height="2"
-            rx="1"
-            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-              isOpen && "rotate-180 hidden"
-            }`}
-          />
-        </svg>
+          <KeyboardArrowDownIcon style={{ color: "#191D20" }} />
+        </motion.div>
       </button>
-
-      <div
-        ref={accordion}
-        className={`transition-all duration-300 ease-in-out opacity-80 overflow-hidden`}
-        style={
-          isOpen
-            ? { maxHeight: accordion?.current?.scrollHeight, opacity: 1 }
-            : { maxHeight: 0, opacity: 0 }
-        }
-      >
-        <div className="pb-5 leading-relaxed">{item?.answer}</div>
-      </div>
-    </li>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="p-4 text-gray-600 bg-white rounded-b-lg">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
-const FAQ = () => {
+const Faq = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqData = [
+    {
+      question: "¿Cómo funciona la valoración con IA?",
+      answer:
+        "Nuestra plataforma utiliza algoritmos avanzados de inteligencia artificial que analizan miles de datos del mercado inmobiliario en tiempo real. Consideramos factores como ubicación, características de la propiedad, tendencias del mercado y comparables recientes para proporcionar una valoración precisa.",
+    },
+    {
+      question: "¿Qué tan precisa es la valoración?",
+      answer:
+        "Nuestro sistema tiene una precisión promedio del 95% en comparación con los precios finales de venta. Esto se logra gracias a nuestra base de datos de más de 15,000 propiedades y la constante actualización de información del mercado.",
+    },
+    {
+      question: "¿Cuánto tiempo toma recibir la valoración?",
+      answer:
+        "La valoración es instantánea. Una vez que ingreses los datos básicos de tu propiedad, nuestro sistema procesará la información y te proporcionará un informe detallado en cuestión de segundos.",
+    },
+    {
+      question: "¿Qué información necesito proporcionar?",
+      answer:
+        "Solo necesitas datos básicos como la dirección de la propiedad, metros cuadrados, número de habitaciones y baños. Cuanta más información proporciones, más precisa será la valoración, pero estos datos básicos son suficientes para obtener una estimación inicial.",
+    },
+    {
+      question: "¿El servicio tiene algún costo?",
+      answer:
+        "No, el servicio de valoración es completamente gratuito. Nuestro objetivo es proporcionar transparencia al mercado inmobiliario y ayudar a propietarios y compradores a tomar decisiones informadas.",
+    },
+  ];
+
   return (
-    <section className="bg-base-200" id="faq">
-      <div className="py-24 px-8 max-w-3xl mx-auto flex flex-col gap-12">
-        <div className="flex flex-col text-left">
-          <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
-          <p className="sm:text-4xl text-3xl font-extrabold text-base-content">
-            Frequently Asked Questions
+    <section className={`w-full py-20 ${raleway.className} bg-white`}>
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2
+            className="text-3xl font-semibold mb-4"
+            style={{ color: "#191D20" }}
+          >
+            Preguntas Frecuentes
+          </h2>
+          <p className="text-gray-600">
+            Todo lo que necesitas saber sobre nuestra plataforma
           </p>
         </div>
 
-        <ul className="w-full">
-          {faqList.map((item, i) => (
-            <Item key={i} item={item} />
+        <div className="space-y-4">
+          {faqData.map((faq, index) => (
+            <FaqItem
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === index}
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            />
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
 };
 
-export default FAQ;
+export default Faq;

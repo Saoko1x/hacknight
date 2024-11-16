@@ -29,7 +29,7 @@ const Header = () => {
         {/* Center Navigation Links - Desktop */}
         <div className="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
           <Link
-            href="/propietarios"
+            href="/"
             className="text-base hover:underline"
             style={{ color: "#191D20" }}
           >

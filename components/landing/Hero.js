@@ -11,11 +11,7 @@ const Hero = () => {
       className={`relative w-full py-12 ${raleway.className}`}
       style={{ backgroundColor: "#FBF7EE" }}
     >
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        <p className="text-sm mb-2" style={{ color: "#191D20" }}>
-          Subtítulo
-        </p>
-
+      <div className="mt-20 max-w-3xl mx-auto px-4 text-center">
         <h1
           className="text-3xl md:text-4xl font-semibold mb-2"
           style={{ color: "#191D20" }}
