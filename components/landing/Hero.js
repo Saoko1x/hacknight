@@ -2,7 +2,6 @@
 import { Raleway } from "next/font/google";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
-import ImageIcon from "@mui/icons-material/Image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -97,7 +96,7 @@ const Hero = () => {
           </div>
 
           <motion.div 
-            className="relative h-[80vh] md:h-[85vh] mx-auto"
+            className="relative h-[70vh] md:h-[75vh] mx-auto"
             style={{
               scale,
               opacity,
@@ -105,12 +104,19 @@ const Hero = () => {
               maxWidth: "100%",
               borderRadius,
               overflow: 'hidden',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
+              backgroundColor: 'transparent'
             }}
           >
-            <div className="absolute inset-0 bg-white flex items-center justify-center">
-              <ImageIcon className="w-24 h-24 text-gray-300" />
-            </div>
+            <Image
+              src="/images/hand-holding-house-selling-real-estate-collage-art-clipping-path-3d-render 2.png"
+              alt="Casa en mano representando valoración inmobiliaria"
+              fill
+              style={{ 
+                objectFit: 'contain',
+                objectPosition: 'center'
+              }}
+              priority
+            />
           </motion.div>
         </div>
       </div>
