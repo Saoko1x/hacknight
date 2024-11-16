@@ -26,7 +26,7 @@ export default function ValorarPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    console.log(inputs);
+    console.log({ inputs });
 
     try {
       console.log("Sending prediction request:", inputs);
