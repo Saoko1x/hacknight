@@ -1,5 +1,7 @@
 import { Raleway } from "next/font/google";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -26,85 +28,82 @@ const Stats = () => {
         {/* Cards Container */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* Card 1 */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col h-full">
             <div className="flex justify-between items-center mb-4">
-              <TrendingUpIcon className="text-gray-600" />
+              <TrendingUpIcon style={{ color: "#4B5563", fontSize: "28px" }} />
               <span className="text-sm text-gray-600">+12.5% vs 2023</span>
             </div>
-            <h3 className="text-lg mb-2" style={{ color: "#191D20" }}>
-              Valor promedio
-            </h3>
-            <div
-              className="inline-block px-3 py-1 rounded"
-              style={{ backgroundColor: "#EEDFA1" }}
-            >
-              <span
-                className="text-2xl font-semibold"
-                style={{ color: "#191D20" }}
+            <div className="flex-grow">
+              <h3 className="text-lg font-medium mb-3" style={{ color: "#191D20" }}>
+                Valor promedio
+              </h3>
+              <div
+                className="inline-block px-4 py-2 rounded"
+                style={{ backgroundColor: "#EEDFA1" }}
               >
-                $3.2M
-              </span>
+                <span className="text-2xl font-semibold" style={{ color: "#191D20" }}>
+                  $3.2M
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-gray-600">
+                Propiedades valuadas en 2024
+              </p>
             </div>
-            <p className="mt-4 text-sm" style={{ color: "#191D20" }}>
-              Propiedades valuadas en 2024
-            </p>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col h-full">
             <div className="flex justify-between items-center mb-4">
-              <TrendingUpIcon className="text-gray-600" />
+              <AccessTimeIcon style={{ color: "#4B5563", fontSize: "28px" }} />
               <span className="text-sm text-gray-600">-15% vs 2023</span>
             </div>
-            <h3 className="text-lg mb-2" style={{ color: "#191D20" }}>
-              Tiempo promedio
-            </h3>
-            <div
-              className="inline-block px-3 py-1 rounded"
-              style={{ backgroundColor: "#EEDFA1" }}
-            >
-              <span
-                className="text-2xl font-semibold"
-                style={{ color: "#191D20" }}
+            <div className="flex-grow">
+              <h3 className="text-lg font-medium mb-3" style={{ color: "#191D20" }}>
+                Tiempo promedio
+              </h3>
+              <div
+                className="inline-block px-4 py-2 rounded"
+                style={{ backgroundColor: "#EEDFA1" }}
               >
-                45 días
-              </span>
+                <span className="text-2xl font-semibold" style={{ color: "#191D20" }}>
+                  45 días
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-gray-600">
+                Para vender una propiedad
+              </p>
             </div>
-            <p className="mt-4 text-sm" style={{ color: "#191D20" }}>
-              Para vender una propiedad
-            </p>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col h-full">
             <div className="flex justify-between items-center mb-4">
-              <TrendingUpIcon className="text-gray-600" />
-              <span className="text-sm text-gray-600"></span>
+              <HomeWorkIcon style={{ color: "#4B5563", fontSize: "28px" }} />
+              <span className="text-sm text-gray-600">Actualizado</span>
             </div>
-            <h3 className="text-lg mb-2" style={{ color: "#191D20" }}>
-              Propiedades
-            </h3>
-            <div
-              className="inline-block px-3 py-1 rounded"
-              style={{ backgroundColor: "#EEDFA1" }}
-            >
-              <span
-                className="text-2xl font-semibold"
-                style={{ color: "#191D20" }}
+            <div className="flex-grow">
+              <h3 className="text-lg font-medium mb-3" style={{ color: "#191D20" }}>
+                Propiedades
+              </h3>
+              <div
+                className="inline-block px-4 py-2 rounded"
+                style={{ backgroundColor: "#EEDFA1" }}
               >
-                15,000+
-              </span>
+                <span className="text-2xl font-semibold" style={{ color: "#191D20" }}>
+                  15,000+
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-gray-600">
+                En nuestra base de datos
+              </p>
             </div>
-            <p className="mt-4 text-sm" style={{ color: "#191D20" }}>
-              En nuestra base de datos
-            </p>
           </div>
         </div>
 
         {/* Botón */}
         <div className="text-center">
           <button
-            className="border border-gray-300 rounded px-6 py-2 bg-white"
+            className="border border-gray-300 rounded-lg px-8 py-3 bg-white hover:bg-gray-50 transition-colors duration-200"
             style={{ color: "#191D20" }}
           >
             Comenzar a cotizar
