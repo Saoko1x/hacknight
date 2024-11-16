@@ -29,3 +29,50 @@ input[type="reset"],
 [role="button"] {
   cursor: pointer;
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+@keyframes notification {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-notification {
+    animation: notification 3.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
