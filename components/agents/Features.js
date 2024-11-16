@@ -7,7 +7,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 const FeatureCard = ({ icon, title, description, features }) => (
-  <div className="bg-white p-8 rounded-lg shadow-md">
+  <div className="bg-white p-8 rounded-lg border border-gray-200">
     <div
       className="w-12 h-12 rounded-full flex items-center justify-center mb-6"
       style={{ backgroundColor: "#EEDFA1" }}

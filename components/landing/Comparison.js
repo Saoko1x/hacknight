@@ -10,11 +10,11 @@ const ComparisonRow = ({ characteristic, traditional, proptech, isEven }) => (
       isEven ? "bg-gray-50/5" : "bg-transparent"
     }`}
   >
-    <div className="px-4 text-sm text-gray-800">{characteristic}</div>
-    <div className="px-4 text-sm text-center text-gray-800">
+    <div className="px-4 text-sm text-gray-600">{characteristic}</div>
+    <div className="px-4 text-sm text-center text-gray-600">
       {typeof traditional === "boolean" ? (
         traditional ? (
-          <CheckIcon className="text-green-600 mx-auto" />
+          <CheckIcon className="text-green-500 mx-auto" />
         ) : (
           <CloseIcon className="text-red-500 mx-auto" />
         )
@@ -22,10 +22,10 @@ const ComparisonRow = ({ characteristic, traditional, proptech, isEven }) => (
         traditional
       )}
     </div>
-    <div className="px-4 text-sm text-center text-gray-800">
+    <div className="px-4 text-sm text-center text-gray-600">
       {typeof proptech === "boolean" ? (
         proptech ? (
-          <CheckIcon className="text-green-600 mx-auto" />
+          <CheckIcon className="text-green-500 mx-auto" />
         ) : (
           <CloseIcon className="text-red-500 mx-auto" />
         )
@@ -81,23 +81,26 @@ const Comparison = () => {
   ];
 
   return (
-    <section className={`w-full py-20 ${raleway.className} bg-white`}>
+    <section className={`w-full py-24 ${raleway.className} bg-white`}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold mb-4 text-gray-900">
-            PropTech IA vs. Valuación Tradicional
+        <div className="text-center mb-16">
+          <h2
+            className="text-4xl font-semibold mb-4"
+            style={{ color: "#191D20" }}
+          >
+            100 Casas vs. 1 Valuación Tradicional
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Descubre por qué somos la opción más eficiente
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100">
+        <div className="bg-white rounded-lg border border-gray-200">
           {/* Header */}
-          <div className="grid grid-cols-3 bg-gray-50 py-4 font-semibold text-gray-800">
+          <div className="grid grid-cols-3 bg-gray-50 py-4 font-semibold" style={{ color: "#191D20" }}>
             <div className="px-4">Característica</div>
             <div className="px-4 text-center">Valuación Tradicional</div>
-            <div className="px-4 text-center">PropTech IA</div>
+            <div className="px-4 text-center">100 Casas</div>
           </div>
 
           {/* Rows */}

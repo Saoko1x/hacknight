@@ -24,7 +24,7 @@ const CallToAction = () => {
 
         <Link
           href="/valorar"
-          className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-md transition-all hover:bg-gray-50"
+          className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-md transition-all hover:bg-gray-50 bg-white"
           style={{ color: "#191D20" }}
         >
           <span>Valorar mi casa</span>
