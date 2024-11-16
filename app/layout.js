@@ -5,6 +5,7 @@ import "./globals.css";
 import connectDB from "@/libs/mongoose";
 import config from "@/config";
 import { NextAuthProvider } from "@/components/NextAuthProvider";
+import CustomCursor from "@/components/common/CustomCursor";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }) {
       >
         <NextAuthProvider>
           <Header />
+          <CustomCursor />
           {children}
           <Footer />
         </NextAuthProvider>

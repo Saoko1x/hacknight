@@ -4,6 +4,8 @@ const nextConfig = {
     domains: [
       "lh3.googleusercontent.com", // Para imágenes de perfil de Google
       "avatars.githubusercontent.com", // Por si usas GitHub en el futuro
+      "fonts.googleapis.com",
+      "fonts.gstatic.com",
     ],
   },
 };

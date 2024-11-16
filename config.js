@@ -1,6 +1,6 @@
 const config = {
   // REQUIRED
-  appName: "Escuelita Starter",
+  appName: "100 Casas",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
     "Escuelita Starter is a template to start creating your own projects FAST",
