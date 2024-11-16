@@ -3,7 +3,7 @@ import Stats from "@/components/landing/Stats";
 import Process from "@/components/landing/Process";
 import Comparison from "@/components/landing/Comparison";
 import CallToAction from "@/components/landing/CallToAction";
-import Faq from "@/components/landing/Faq";
+import FAQ from "@/components/landing/FAQ";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Process />
       <Comparison />
       <CallToAction />
-      <Faq />
+      <FAQ />
     </main>
   );
 }

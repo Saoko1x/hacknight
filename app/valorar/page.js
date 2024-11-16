@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import { Raleway } from "next/font/google";
+
+const raleway = Raleway({ subsets: ["latin"] });
 
 export default function ValorarPage() {
   const [inputs, setInputs] = useState({
@@ -60,36 +63,48 @@ export default function ValorarPage() {
 
   return (
     <div
-      className="min-h-screen p-8 pt-24"
-      style={{ backgroundColor: "#FBF7EE" }}
+      className={`min-h-screen p-8 pt-24 ${raleway.className}`}
+      style={{ 
+        backgroundColor: "#FBF7EE",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23EDE9E0' stroke-width='0.15'%3E%3Cpath d='M0 20h100 M0 40h100 M0 60h100 M0 80h100' /%3E%3Cpath d='M20 0v100 M40 0v100 M60 0v100 M80 0v100' /%3E%3Ccircle cx='20' cy='20' r='2' fill='none' /%3E%3Ccircle cx='80' cy='80' r='2' fill='none' /%3E%3Cpath d='M30 30h40v40H30z' fill='none' /%3E%3Cpath d='M25 25l10 10 M75 25l-10 10 M25 75l10 -10 M75 75l-10 -10' fill='none' /%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '400px 400px',
+        backgroundPosition: 'center',
+      }}
     >
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center">
           <h1
-            className="text-3xl md:text-4xl font-semibold mb-2"
+            className="text-4xl md:text-5xl font-semibold mb-4"
             style={{ color: "#191D20" }}
           >
-            <span style={{ backgroundColor: "#EEDFA1", padding: "0 8px" }}>
+            <span 
+              style={{ 
+                backgroundColor: "#EEDFA1",
+                padding: "0.2em 0.5em",
+                borderRadius: "12px",
+                boxDecorationBreak: "clone",
+                WebkitBoxDecorationBreak: "clone",
+                display: "inline",
+                lineHeight: "1.45",
+              }}
+            >
               Simulador
             </span>{" "}
             de Avalúo Inmobiliario
           </h1>
-          <p className="text-sm md:text-base mb-8" style={{ color: "#191D20" }}>
-            Para estimar el valor del inmueble necesitamos algunos datos:
+          <p className="text-lg md:text-xl mb-16 max-w-2xl mx-auto" style={{ color: "#191D20" }}>
+            Para estimar el valor del inmueble necesitamos algunos datos
           </p>
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Card Left */}
-          <div className="card bg-white shadow-xl p-6 w-full md:w-1/2">
+          <div className="card bg-white p-8 rounded-lg shadow-sm border border-gray-100 w-full md:w-1/2">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Superficie Construida */}
               <div className="form-control">
                 <label className="label">
-                  <span
-                    className="label-text font-medium"
-                    style={{ color: "#191D20" }}
-                  >
+                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
                     Superficie construida en m²
                   </span>
                 </label>
@@ -98,12 +113,8 @@ export default function ValorarPage() {
                   name="metros"
                   value={inputs.metros}
                   onChange={handleInputChange}
-                  className="input input-bordered w-full bg-white focus:outline-none focus:border-gray-400"
-                  style={{
-                    border: "1px solid #E5E7EB",
-                    color: "#191D20",
-                    backgroundColor: "white",
-                  }}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-400 bg-white transition-colors"
+                  style={{ color: "#191D20" }}
                   placeholder="Ej: 100"
                   required
                 />
@@ -112,10 +123,7 @@ export default function ValorarPage() {
               {/* Número de Cuartos */}
               <div className="form-control">
                 <label className="label">
-                  <span
-                    className="label-text font-medium"
-                    style={{ color: "#191D20" }}
-                  >
+                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
                     Número de cuartos
                   </span>
                 </label>
@@ -124,12 +132,8 @@ export default function ValorarPage() {
                   name="habitaciones"
                   value={inputs.habitaciones}
                   onChange={handleInputChange}
-                  className="input input-bordered w-full bg-white focus:outline-none focus:border-gray-400"
-                  style={{
-                    border: "1px solid #E5E7EB",
-                    color: "#191D20",
-                    backgroundColor: "white",
-                  }}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-400 bg-white transition-colors"
+                  style={{ color: "#191D20" }}
                   placeholder="Ej: 3"
                   required
                 />
@@ -138,10 +142,7 @@ export default function ValorarPage() {
               {/* Número de Baños */}
               <div className="form-control">
                 <label className="label">
-                  <span
-                    className="label-text font-medium"
-                    style={{ color: "#191D20" }}
-                  >
+                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
                     Número de baños
                   </span>
                 </label>
@@ -150,12 +151,8 @@ export default function ValorarPage() {
                   name="banos"
                   value={inputs.banos}
                   onChange={handleInputChange}
-                  className="input input-bordered w-full bg-white focus:outline-none focus:border-gray-400"
-                  style={{
-                    border: "1px solid #E5E7EB",
-                    color: "#191D20",
-                    backgroundColor: "white",
-                  }}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-400 bg-white transition-colors"
+                  style={{ color: "#191D20" }}
                   placeholder="Ej: 2"
                   required
                 />
@@ -164,10 +161,7 @@ export default function ValorarPage() {
               {/* Zona */}
               <div className="form-control">
                 <label className="label">
-                  <span
-                    className="label-text font-medium"
-                    style={{ color: "#191D20" }}
-                  >
+                  <span className="text-base font-medium" style={{ color: "#191D20" }}>
                     Zona de ubicación
                   </span>
                 </label>
@@ -175,12 +169,8 @@ export default function ValorarPage() {
                   name="location"
                   value={inputs.location}
                   onChange={handleInputChange}
-                  className="select select-bordered w-full bg-white focus:outline-none focus:border-gray-400"
-                  style={{
-                    border: "1px solid #E5E7EB",
-                    color: "#191D20",
-                    backgroundColor: "white",
-                  }}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:border-gray-400 bg-white transition-colors"
+                  style={{ color: "#191D20" }}
                   required
                 >
                   <option value="">Seleccionar...</option>
@@ -193,48 +183,66 @@ export default function ValorarPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="btn btn-primary w-full hover:bg-[#E5D590]"
+                className="w-full p-3 rounded-lg font-medium transition-colors hover:bg-[#E5D590]"
                 style={{
                   backgroundColor: "#EEDFA1",
                   color: "#191D20",
-                  border: "none",
-                  transition: "background-color 0.3s ease",
                 }}
+                disabled={loading}
               >
-                Calcular Valor
+                {loading ? "Calculando..." : "Calcular Valor"}
               </button>
             </form>
           </div>
 
-          {/* Card Right */}
+          {/* Card Right - Results */}
+          <div className="w-full md:w-1/2">
             {prediction && !loading && (
-          <div className="card bg-white shadow-xl p-6 w-full md:w-1/2 flex justify-center items-center">
-              <div className="space-y-4 text-black text-center">
-                <h2
-                  className="text-xl font-semibold mb-4"
-                  style={{ color: "#191D20" }}
-                >
+              <div className="card bg-white p-8 rounded-lg shadow-sm border border-gray-100 space-y-6">
+                <h2 className="text-xl font-semibold" style={{ color: "#191D20" }}>
                   Resultados de la Predicción
                 </h2>
-                <div>
-                  <span className="font-medium">Precio Máximo: </span>
-                  <span>{formatPrice(prediction.max_price)}</span>
-                </div>
-                <div>
-                  <span className="font-medium">Precio Mínimo: </span>
-                  <span>{formatPrice(prediction.min_price)}</span>
-                </div>
-                <div>
-                  <span className="font-medium">Precio Predicho: </span>
-                  <span>{formatPrice(prediction.predicted_price)}</span>
+                <div className="space-y-4">
+                  <div className="p-4 rounded-lg" style={{ backgroundColor: "#EEDFA1" }}>
+                    <p className="text-sm font-medium mb-1" style={{ color: "#191D20" }}>
+                      Precio Predicho
+                    </p>
+                    <p className="text-2xl font-semibold" style={{ color: "#191D20" }}>
+                      {formatPrice(prediction.predicted_price)}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <p className="text-sm font-medium mb-1" style={{ color: "#191D20" }}>
+                        Precio Mínimo
+                      </p>
+                      <p className="text-lg font-semibold" style={{ color: "#191D20" }}>
+                        {formatPrice(prediction.min_price)}
+                      </p>
+                    </div>
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <p className="text-sm font-medium mb-1" style={{ color: "#191D20" }}>
+                        Precio Máximo
+                      </p>
+                      <p className="text-lg font-semibold" style={{ color: "#191D20" }}>
+                        {formatPrice(prediction.max_price)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-            {/* Cargando / Error */}
-            {loading && <p>Cargando...</p>}
-            {error && <p className="text-red-600">{error}</p>}
+            )}
+            {loading && (
+              <div className="card bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                <p style={{ color: "#191D20" }}>Calculando resultados...</p>
+              </div>
+            )}
+            {error && (
+              <div className="card bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                <p className="text-red-600">{error}</p>
+              </div>
+            )}
           </div>
-          )}
         </div>
       </div>
     </div>

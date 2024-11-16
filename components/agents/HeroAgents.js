@@ -65,8 +65,20 @@ const HeroAgents = () => {
   return (
     <div
       className={`relative w-full min-h-screen ${raleway.className}`}
-      style={{ backgroundColor: "#FBF7EE" }}
+      style={{ 
+        backgroundColor: "#FBF7EE",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23EDE9E0' stroke-width='0.15'%3E%3Cpath d='M0 20h100 M0 40h100 M0 60h100 M0 80h100' /%3E%3Cpath d='M20 0v100 M40 0v100 M60 0v100 M80 0v100' /%3E%3Ccircle cx='20' cy='20' r='2' fill='none' /%3E%3Ccircle cx='80' cy='80' r='2' fill='none' /%3E%3Cpath d='M30 30h40v40H30z' fill='none' /%3E%3Cpath d='M25 25l10 10 M75 25l-10 10 M25 75l10 -10 M75 75l-10 -10' fill='none' /%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '400px 400px',
+        backgroundPosition: 'center',
+      }}
     >
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(251, 247, 238, 0) 0%, #FBF7EE 100%)',
+        }}
+      />
+
       <div className="absolute w-full top-[10%] md:top-[15%] z-30 pointer-events-none">
         {activeNotifications.map((notif) => (
           <Notification
@@ -78,7 +90,7 @@ const HeroAgents = () => {
       </div>
 
       <div className="relative flex items-center justify-center min-h-screen">
-        <div className="relative max-w-4xl mx-auto px-4 text-center z-20">
+        <div className="relative max-w-4xl mx-auto px-4 text-center z-20 pt-20 md:pt-28">
           <p className="text-sm md:text-base mb-4" style={{ color: "#191D20" }}>
             Plataforma Premium para Agentes Inmobiliarios
           </p>

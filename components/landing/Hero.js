@@ -2,84 +2,122 @@
 import { Raleway } from "next/font/google";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
-import ImageIcon from "@mui/icons-material/Image";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
 const Hero = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+  const width = useTransform(scrollYProgress, [0, 1], ["98%", "100%"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 1], ["24px", "0px"]);
+
   return (
     <div
-      className={`relative w-full py-12 ${raleway.className}`}
-      style={{ backgroundColor: "#FBF7EE" }}
+      ref={containerRef}
+      className={`relative w-full min-h-screen ${raleway.className}`}
+      style={{ 
+        backgroundColor: "#FBF7EE",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23EDE9E0' stroke-width='0.15'%3E%3Cpath d='M0 20h100 M0 40h100 M0 60h100 M0 80h100' /%3E%3Cpath d='M20 0v100 M40 0v100 M60 0v100 M80 0v100' /%3E%3Ccircle cx='20' cy='20' r='2' fill='none' /%3E%3Ccircle cx='80' cy='80' r='2' fill='none' /%3E%3Cpath d='M30 30h40v40H30z' fill='none' /%3E%3Cpath d='M25 25l10 10 M75 25l-10 10 M25 75l10 -10 M75 75l-10 -10' fill='none' /%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '400px 400px',
+        backgroundPosition: 'center',
+      }}
     >
-      <div className="mt-20 max-w-3xl mx-auto px-4 text-center">
-        <h1
-          className="text-3xl md:text-4xl font-semibold mb-2"
-          style={{ color: "#191D20" }}
-        >
-          <span style={{ backgroundColor: "#EEDFA1", padding: "0 8px" }}>
-            Conoce el Valor
-          </span>{" "}
-          Real de tu Propiedad
-        </h1>
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(251, 247, 238, 0) 0%, #FBF7EE 100%)',
+        }}
+      />
 
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="relative w-32 h-14 bg-gray-200 rounded flex items-center justify-center">
-            <ImageIcon className="w-8 h-8 text-gray-400" />
-            {/* Aquí irá la imagen cuando esté disponible */}
-            {/* <Image
-              src="/path-to-image.jpg"
-              alt="Decorative image"
-              fill
-              className="object-cover rounded"
-            /> */}
-          </div>
-          <h2 className="text-xl md:text-2xl" style={{ color: "#191D20" }}>
-            En Minutos y Gratis
-          </h2>
-          <div className="relative w-32 h-14 bg-gray-200 rounded flex items-center justify-center">
-            {/* Aquí irá la imagen cuando esté disponible */}
-            {/* <Image
-              src="/path-to-image.jpg"
-              alt="Decorative image"
-              fill
-              className="object-cover rounded"
-            /> */}
-            <ImageIcon className="w-8 h-8 text-gray-400" />
-          </div>
-        </div>
+      <div className="relative flex items-center justify-center min-h-screen">
+        <div className="relative max-w-4xl mx-auto px-4 text-center z-20 pt-24 md:pt-32">
+          <p className="text-sm md:text-base mb-6" style={{ color: "#191D20" }}>
+            Valoración Inmobiliaria Inteligente
+          </p>
 
-        <p className="text-sm md:text-base mb-8" style={{ color: "#191D20" }}>
-          Utiliza nuestra tecnología de IA para obtener una valoración precisa y
-          correcta con los mejores agentes inmobiliarios
-        </p>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-8"
+            style={{ color: "#191D20" }}
+          >
+            <div className="mb-4">Conoce el Valor</div>
+            <div>
+              <span 
+                style={{ 
+                  backgroundColor: "#EEDFA1", 
+                  padding: "0.2em 0.5em",
+                  borderRadius: "12px",
+                  boxDecorationBreak: "clone",
+                  WebkitBoxDecorationBreak: "clone",
+                  display: "inline",
+                  lineHeight: "1.45",
+                }}
+              >
+                Real de tu Propiedad
+              </span>
+            </div>
+          </h1>
 
-        <div className="flex justify-center mb-8">
-          <Link href="/valorar">
+          <p 
+            className="text-lg md:text-xl mb-16 max-w-2xl mx-auto"
+            style={{ color: "#191D20" }}
+          >
+            Utiliza nuestra tecnología de IA para obtener una valoración precisa y
+            correcta con los mejores agentes inmobiliarios
+          </p>
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20">
+            <Link href="/valorar">
+              <button
+                className="flex items-center rounded border bg-white px-8 py-3 hover:bg-gray-50 transition-colors"
+                style={{ color: "#191D20" }}
+              >
+                <span className="font-medium">Valorar mi casa</span>
+                <ArrowForwardIcon 
+                  className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" 
+                />
+              </button>
+            </Link>
+
             <button
-              className="flex items-center gap-2 btn btn-outline bg-white hover:bg-gray-50 px-6 py-3 rounded-lg transition-all"
-              style={{
-                color: "#191D20",
-                border: "1px solid #E5E7EB",
-                boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
-              }}
+              className="flex items-center rounded border border-gray-300 px-8 py-3 hover:bg-white/50 transition-colors"
+              style={{ backgroundColor: "transparent", color: "#191D20" }}
             >
-              Valorar mi casa
-              <ArrowForwardIcon className="w-5 h-5" />
+              Ver Demo
             </button>
-          </Link>
-        </div>
+          </div>
 
-        <div className="relative w-full h-[50vh] bg-gray-200 rounded-lg flex items-center justify-center">
-          {/* Aquí irá la imagen cuando esté disponible */}
-          {/* <Image
-              src="/path-to-image.jpg"
-              alt="Decorative image"
+          <motion.div 
+            className="relative h-[70vh] md:h-[75vh] mx-auto"
+            style={{
+              scale,
+              opacity,
+              width: "98%",
+              maxWidth: "100%",
+              borderRadius,
+              overflow: 'hidden',
+              backgroundColor: 'transparent'
+            }}
+          >
+            <Image
+              src="/images/hand-holding-house-selling-real-estate-collage-art-clipping-path-3d-render 2.png"
+              alt="Casa en mano representando valoración inmobiliaria"
               fill
-              className="object-cover rounded"
-            /> */}
-          <ImageIcon className="w-20 h-20 text-gray-400" />
+              style={{ 
+                objectFit: 'contain',
+                objectPosition: 'center'
+              }}
+              priority
+            />
+          </motion.div>
         </div>
       </div>
     </div>
